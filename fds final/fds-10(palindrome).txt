@@ -1,0 +1,32 @@
+#include <iostream>
+#include<cstring>
+using namespace std;
+
+int main()
+{
+    char string1[20];
+    int i, length;
+    int flag = 0;
+    string a;
+    cout << "Enter a string: "; cin >> string1;
+    
+    length = strlen(string1);
+    
+    for(i=0;i < length ;i++){
+        if(string1[i] != string1[length-i-1]){
+            flag = 1;
+            break;
+           }
+        }
+    
+    if (flag) {
+        cout <<endl<< string1 << " is not a palindrome" << endl; 
+    }    
+    else {
+        cout <<endl<<string1 << " is a palindrome" << endl; 
+    }
+    
+    a=strrev(string1);
+    cout<<"\n\nString Reverse: "<<a;
+    return 0;
+}

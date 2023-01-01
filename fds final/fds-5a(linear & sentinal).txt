@@ -1,0 +1,36 @@
+#linear search /sentinal search
+student_list=input("Enter the Roll number of students who attended the training program: ").split(" ")
+print(student_list)
+
+def linear_search(l,key):
+    for i in range(len(l)):
+        if l[i]==key:
+            return i
+
+    return -1
+ele=input("\nEnter Roll number to be searched: ")
+index= linear_search(student_list,ele)
+if index==-1:
+    print("\n\nStudent is not present(Linear Search)")
+else:
+    print("\n\nStudent is present at position",index,"(Linear search)")
+
+
+def sentinal_search(l,key):
+    last=l[-1]
+    l[-1]=key
+    i=0
+    while l[i]!=key:
+        i+=1
+
+    if i!=len(l)-1:
+        return i
+    if last==key:
+        return len(l)-1
+    return -1
+
+index=sentinal_search(student_list,ele)
+if index==-1:
+    print("\n\nStudent is not present (Sentinal Search)")
+else:
+    print("\n\nStudent is present at position",index,"(Sentinal Search)")

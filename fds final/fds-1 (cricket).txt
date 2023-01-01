@@ -1,0 +1,47 @@
+def intersection(l1,l2):
+    res=[]
+
+    for students in l1:
+        if students in l2:
+            res.append(students)
+
+    return res
+
+def union(l1,l2):
+    res=l2.copy()
+
+    for students in l1:
+        if not students in l2:
+            res.append(students)
+    return res
+
+def diff(l1,l2):
+    res=[]
+    for students in l1:
+        if not students in l2:
+            res.append(students)
+    return res
+
+
+a=input("Enter students who play cricket: ").split()
+b=input("Enter students who play badminton: ").split()
+c=input("Enter number of students who play football: ").split()
+
+
+
+print("Students who play cricket and badminton both: ",intersection(a,b))
+
+
+
+u=diff(a,b)
+i=diff(b,a)
+print("students who play either cricket or badminton but not both: ",union(u,i))
+
+
+diffcb=diff(c,b)
+print("students who play neither cricket nor badminton: ",diff(diffcb,a))
+
+
+
+print("students who play cricket or football but not badminton: ",union(diff(a,b),diff(c,b)))
+

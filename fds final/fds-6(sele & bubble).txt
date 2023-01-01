@@ -1,0 +1,51 @@
+#Selection sort and bubble sort
+
+def selection_sort(a):
+    for i in range(len(a)-1):
+        min_index=i
+        for j in range(i,len(a)):
+            if a[min_index]>a[j]:
+                min_index=j
+        a[i],a[min_index]=a[min_index],a[i]
+        print(a)
+
+
+def bubble_sort(a):
+    for j in range(len(a)):
+        for i in range(len(a)-1):
+            if a[i]>a[i+1]:
+                a[i],a[i+1]=a[i+1],a[i]
+            print(a)
+
+
+
+
+
+a=input("Enter the percentage of students: ").split(" ")
+
+
+ch=int(input("1.Selection Sort\n2.Bubble sort\nEnter Your Choice:"))
+if (ch==1):
+    print("\n\nSelection sort:")
+    print("Unsorted Array: ",a)
+    selection_sort(a)
+    print ("Sorted Array",a)
+
+elif(ch==2):
+    print("\n\nBubble sort:")
+    print("Unsorted Array: ",a)
+    bubble_sort(a)
+    print("Sorted Array:",a)
+
+else:
+    print("Wrong Choice Entered")
+
+
+
+
+
+
+
+
+
+

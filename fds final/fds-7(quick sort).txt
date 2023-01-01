@@ -1,0 +1,36 @@
+def partation(num,low,high):
+    pivot=num[(low+high)//2]
+    i=low-1
+    j=high+1
+
+    while True:
+        i+=1
+        while num[i]<pivot:
+            i+=1
+        
+        j-=1
+        while num[j]>pivot:
+            j-=1
+
+        if i>=j:
+            return j
+
+        num[i],num[j]=num[j],num[i]
+
+def quick_sort(num):
+    def _quick_sort(item,low,high):
+        if low<high:
+            location=partation(item,low,high)
+            _quick_sort(item,low,location)
+            _quick_sort(item,location +1,high)
+    _quick_sort(num,0,len(num)-1)
+
+l=[]
+n=int(input("Enter total number of Elements in the list: "))
+for i in range(n):
+    inp=int(input(f"Enter Element {i+1}: "))
+    l.append(inp)
+
+print("Elements you Entered: ",l)
+quick_sort(l)
+print("sorted List:",l)
