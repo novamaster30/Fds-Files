@@ -1,103 +1,110 @@
 #include <iostream>
 using namespace std;
-#define MAX 5
-class jobqueue
+const int MAX=10;
+class Queue
 {
-int a[MAX],front,rear;
+int data[MAX];
+int front,rear;
 public:
-jobqueue()
+Queue()
 {
-front=-1;
-rear=-1;
+front=rear=-1;
 }
-void addjob(int);
-int deletejob();
-int isfull();
-int isempty();
+void enqueue(int);
+void dequeue();
+int isFull();
+int isEmpty();
 void display();
 };
-void jobqueue::addjob(int x)
+int Queue::isFull()
 {
-if(isfull()==1)
-cout<<"\n The queue is full.New jobs can't be added!!";
-else{
-rear++;
-a[rear]=x;
+if(rear==MAX-1)
+return 1;
+else
+return 0;
+}
+int Queue::isEmpty()
+{
+if(rear==-1||front==rear+1)
+return 1;
+else
+return 0;
+}
+void Queue::enqueue(int ele)
+{
+if(isFull())
+{
+cout<<"\nCan't add ! Queue is Full !";
+}
+else
+{
+if(rear==-1)
+{
+front++;
+data[++rear]=ele;
+cout<<"\nElement added successfully !";
+}
+else
+{
+data[++rear]=ele;
+cout<<"\nElement added successfully !";
 }
 }
-int jobqueue::deletejob(){
-int value;
-if(isempty()==0)
+}
+void Queue::dequeue()
 {
-cout<<"\nthe queue is empty.No jobs to delete!!";
-return -999;
+if(isEmpty())
+{
+cout<<"\nCan't delete ! Queue is Empty !";
 }
 else
 {
 front++;
-value=a[front];
-return value;
-}
-}
-int jobqueue::isfull()
-{
-if(rear== MAX-1)
-return 1;
-else
-return 0;
-}
-int jobqueue::isempty()
-{
-if(rear==front)
-return 0;
-else
-return 1;
-}
-void jobqueue::display()
-{
+cout<<"\nElement removed successfully !";
 
-int x=0;
-
-cout<<"\n the queue is :";
-cout<<"=";
-for(x=front+1;x<=rear;x++)
+}
+}
+void Queue::display()
 {
-cout<<""<<a[x];
+if(isEmpty())
+{
+cout<<"Queue is Empty !";
+}
+else
+{
+for(int i=front;i<=rear;i++)
+cout<<data[i]<<" ";
 }
 }
 int main()
 {
-int choice,x,y;
-char ans;
-jobqueue q1;
+int ch,ele;
+Queue q;
+cout<<"\n--------------Queue Menu--------------";
+cout<<"\n1. Add Element";
+cout<<"\n2. Remove Element";
+cout<<"\n3. Display Elements";
+cout<<"\n4. Exit";
 do
 {
-cout<<"\n******MENU******";
-cout<<"\nMENU DRIVE";
-cout<<"\n1.Add a job";
-cout<<"\n2.Delete a job";
-cout<<"\n3.Display the job queue";
+cout<<"\n--------------------------------------";
 cout<<"\nEnter your choice:";
-cin>>choice;
-switch(choice)
+cin>>ch;
+cout<<"\n--------------------------------------";
+switch(ch)
 {
-case 1: cout<<"\n Enter the job : ";
-cin>>y;
-q1.addjob(y);
-q1.display();
+case 1:
+cout<<"\nEnter element :: ";
+cin>>ele;
+q.enqueue(ele);
 break;
-case 2: x=q1.deletejob();
-if(x!=-999)
- cout<<"\nThe deleted element is: "<<x;
- q1.display();
+case 2:
+q.dequeue();
 break;
-case 3: q1.display();
-break;
-default: cout<<"\nWrong choice!!";
+case 3:
+cout<<"\nElements in Queue :: ";
+q.display();
 break;
 }
-cout<<"\nDo you want to continue(y/n)??";
-cin>>ans;
-}while(ans=='y');
-return 0;
+}while(ch!=4);
 }
