@@ -3,13 +3,13 @@ using namespace std;
 const int MAX=10;
 class Queue
 {
-int data[MAX];
-int front,rear;
+    int data[MAX];
+    int front,rear;
 public:
-Queue()
-{
-front=rear=-1;
-}
+    Queue()
+    {
+        front=rear=-1;
+    }
 void enqueue(int);
 void dequeue();
 int isFull();
@@ -18,93 +18,93 @@ void display();
 };
 int Queue::isFull()
 {
-if(rear==MAX-1)
-return 1;
-else
-return 0;
+    if(rear==MAX-1)
+    return 1;
+    else
+    return 0;
 }
 int Queue::isEmpty()
 {
-if(rear==-1||front==rear+1)
-return 1;
-else
-return 0;
+    if(rear==-1||front==rear+1)
+    return 1;
+    else
+    return 0;
 }
 void Queue::enqueue(int ele)
 {
-if(isFull())
-{
-cout<<"\nCan't add ! Queue is Full !";
-}
-else
-{
-if(rear==-1)
-{
-front++;
-data[++rear]=ele;
-cout<<"\nElement added successfully !";
-}
-else
-{
-data[++rear]=ele;
-cout<<"\nElement added successfully !";
-}
-}
+    if(isFull())
+    {
+        cout<<"\nCan't add ! Queue is Full !";
+    }
+    else
+    {
+        if(rear==-1)
+            {
+                front++;
+                data[++rear]=ele;
+                cout<<"\nElement added successfully !";
+            }
+    else
+    {
+        data[++rear]=ele;
+        cout<<"\nElement added successfully !";
+    }
+    }
 }
 void Queue::dequeue()
 {
-if(isEmpty())
-{
-cout<<"\nCan't delete ! Queue is Empty !";
-}
-else
-{
-front++;
-cout<<"\nElement removed successfully !";
+    if(isEmpty())
+    {
+        cout<<"\nCan't delete ! Queue is Empty !";
+    }
+    else
+    {
+        front++;
+        cout<<"\nElement removed successfully !";
 
-}
+    }
 }
 void Queue::display()
 {
-if(isEmpty())
-{
-cout<<"Queue is Empty !";
-}
-else
-{
-for(int i=front;i<=rear;i++)
-cout<<data[i]<<" ";
-}
+    if(isEmpty())
+    {
+        cout<<"Queue is Empty !";
+    }
+    else
+    {
+        for(int i=front;i<=rear;i++)
+        cout<<data[i]<<" ";
+    }
 }
 int main()
 {
-int ch,ele;
-Queue q;
-cout<<"\n--------------Queue Menu--------------";
-cout<<"\n1. Add Element";
-cout<<"\n2. Remove Element";
-cout<<"\n3. Display Elements";
-cout<<"\n4. Exit";
+    int ch,ele;
+    Queue q;
+    cout<<"\n--------------Queue Menu--------------";
+    cout<<"\n1. Add Element";
+    cout<<"\n2. Remove Element";
+    cout<<"\n3. Display Elements";
+    cout<<"\n4. Exit";
 do
 {
-cout<<"\n--------------------------------------";
-cout<<"\nEnter your choice:";
-cin>>ch;
-cout<<"\n--------------------------------------";
+    cout<<"\n--------------------------------------";
+    cout<<"\nEnter your choice:";
+    cin>>ch;
+    cout<<"\n--------------------------------------";
 switch(ch)
 {
 case 1:
-cout<<"\nEnter element :: ";
-cin>>ele;
-q.enqueue(ele);
-break;
+    cout<<"\nEnter element :: ";
+    cin>>ele;
+    q.enqueue(ele);
+    break;
 case 2:
-q.dequeue();
-break;
+    q.dequeue();
+    break;
 case 3:
-cout<<"\nElements in Queue :: ";
-q.display();
-break;
+    cout<<"\nElements in Queue :: ";
+    q.display();
+    break;
 }
 }while(ch!=4);
 }
